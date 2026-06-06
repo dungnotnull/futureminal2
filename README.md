@@ -1,29 +1,33 @@
-# Futureminal
+# Futureminal2
 
-> The next-generation terminal: AI-native, Privacy-first, Blockchain-auditable.
+**The next-generation terminal: AI-native, Privacy-first, Blockchain-auditable.**
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Rust](https://img.shields.io/badge/Rust-1.92%2B-orange.svg)](https://www.rust-lang.org)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-63%20passed-brightgreen.svg)]()
 
 ---
 
 ## Overview
 
-**Futureminal** is an open-source terminal emulator built on top of [Warp](https://warp.dev)'s proven core engine (`warp_terminal`), extended with cutting-edge features for the modern developer:
+**Futureminal2** is an open-source terminal emulator built on top of [Warp](https://warp.dev)'s proven core engine (`warp_terminal`), extended with cutting-edge features for the modern developer. It is a **distinct project** with its own visual identity, architecture, and feature set.
 
-- **AI-Native**: Multi-provider AI abstraction (OpenAI, Anthropic, Gemini, Ollama, LM Studio) with privacy guardrails and local audit logging.
-- **Blockchain-Auditable**: Immutable command audit logs with optional on-chain notarization (Ethereum, Solana, local chains).
-- **Plugin Ecosystem**: Extensible JavaScript plugin host (QuickJS-powered) for custom terminal workflows.
-- **Privacy-First**: All sensitive data is sanitized before leaving the terminal. Local processing is the default.
-- **GPU-Accelerated**: Real wgpu 29.x renderer with a distinctive visual identity (deep slate blue theme).
+**Key differentiators from Warp:**
+
+- **Distinct Visual Identity**: Deep slate blue theme (`#0F1420`) - visually different from Warp at first glance
+- **AI-Native**: Multi-provider AI abstraction (OpenAI, Anthropic, Gemini, Ollama, LM Studio) with privacy guardrails and local audit logging
+- **Blockchain-Auditable**: Immutable command audit logs with optional on-chain notarization (Ethereum, Solana, local chains)
+- **Plugin Ecosystem**: Extensible JavaScript plugin host (QuickJS-powered) for custom terminal workflows
+- **Privacy-First**: All sensitive data is sanitized before leaving the terminal. Local processing is the default
+- **GPU-Accelerated**: Real wgpu 29.x renderer with a distinctive visual identity
 
 ---
 
 ## Architecture
 
 ```
-Futureminal
+Futureminal2
     |
     +-- warp_terminal (Warp's open-source terminal engine - Alacritty-derived)
     +-- futureminal-core (Terminal grid, VT parser, PTY, shell integration, windowing)
@@ -38,33 +42,33 @@ Futureminal
 
 ## Project Structure
 
-| Crate | Description | Status | Tests |
-|-------|-------------|--------|-------|
-| `crates/futureminal` | Main binary entry point | Compiling | - |
-| `crates/futureminal-core` | Terminal grid, VT100/xterm parser, PTY, windowing | Compiling | 30 passed |
-| `crates/futureminal-renderer` | GPU text rendering (wgpu 29.x) | Compiling | 3 passed |
-| `crates/futureminal-ai` | AI provider abstraction + privacy sanitizer | Compiling | 11 passed |
-| `crates/futureminal-blockchain` | Blockchain audit adapter + vault | Compiling | 12 passed |
-| `crates/futureminal-plugin` | JavaScript plugin host (QuickJS) | Compiling | 6 passed |
-| `crates/futureminal-ipc` | Cross-platform IPC (Unix sockets / Windows named pipes) | Compiling | 1 passed |
-| `warp-fork/crates/warp_terminal` | Warp's open-source terminal engine (Apache 2.0) | Upstream | - |
-| `warp-fork/crates/warp_core` | Warp's shared types and utilities | Upstream | - |
+| Crate | Description | Lines | Status | Tests |
+|-------|-------------|-------|--------|-------|
+| `crates/futureminal` | Main binary entry point | ~300 | Compiles | - |
+| `crates/futureminal-core` | Terminal grid, VT100/xterm parser, PTY, windowing | ~2,400 | Compiles | 30 passed |
+| `crates/futureminal-renderer` | GPU text rendering (wgpu 29.x) | ~300 | Compiles | 3 passed |
+| `crates/futureminal-ai` | AI provider abstraction + privacy sanitizer | ~1,800 | Compiles | 11 passed |
+| `crates/futureminal-blockchain` | Blockchain audit adapter + vault | ~1,200 | Compiles | 12 passed |
+| `crates/futureminal-plugin` | JavaScript plugin host (QuickJS) | ~300 | Compiles | 6 passed |
+| `crates/futureminal-ipc` | Cross-platform IPC (Unix sockets / Windows named pipes) | ~600 | Compiles | 1 passed |
+| `warp-fork/crates/warp_terminal` | Warp's open-source terminal engine (Apache 2.0) | Upstream | Upstream | - |
+| `warp-fork/crates/warp_core` | Warp's shared types and utilities | Upstream | Upstream | - |
 
-**Total: 63 tests, 100% pass rate, 0 ignored.**
+**Total: ~6,700 lines of new Rust code. 63 tests, 100% pass rate, 0 ignored.**
 
 ---
 
 ## Visual Identity
 
-Futureminal uses a **distinctive deep slate blue theme** (`#0F1420` background) that is visually different from Warp's default appearance:
+Futureminal2 uses a **distinctive deep slate blue theme** that is visually different from Warp's default appearance:
 
 ```rust
-// Futureminal's default theme (in futureminal-renderer)
-background: [0.06, 0.08, 0.12, 1.0], // Deep slate blue
+// Futureminal2's default theme (in futureminal-renderer)
+background: [0.06, 0.08, 0.12, 1.0], // Deep slate blue #0F1420
 foreground: [0.85, 0.87, 0.91, 1.0], // Soft white
 ```
 
-The window chrome, tab styling, and UI panels are all custom-designed for Futureminal.
+The window chrome, tab styling, and UI panels are all custom-designed for Futureminal2.
 
 ---
 
@@ -81,8 +85,8 @@ The window chrome, tab styling, and UI panels are all custom-designed for Future
 
 ```bash
 # Clone the repository
-git clone https://github.com/dungnotnull/futureminal.git
-cd futureminal
+git clone https://github.com/dungnotnull/futureminal2.git
+cd futureminal2
 
 # Build the main binary
 cargo build -p futureminal --release
@@ -115,6 +119,7 @@ cargo test -p futureminal-core -p futureminal-ai -p futureminal-blockchain -p fu
 ```
 
 **Current test status:**
+
 | Crate | Passed | Failed | Ignored |
 |-------|--------|--------|---------|
 | futureminal-core | 30 | 0 | 0 |
@@ -123,6 +128,55 @@ cargo test -p futureminal-core -p futureminal-ai -p futureminal-blockchain -p fu
 | futureminal-ipc | 1 | 0 | 0 |
 | futureminal-plugin | 6 | 0 | 0 |
 | futureminal-renderer | 3 | 0 | 0 |
+
+**Result: 63 passed, 0 failed, 0 ignored.**
+
+---
+
+## Feature Highlights
+
+### 1. Multi-Provider AI Router
+
+```rust
+use futureminal_ai::provider::{ProviderRegistry, CompletionRequest};
+
+let registry = ProviderRegistry::default();
+let provider = registry.get("ollama").unwrap();
+let response = provider.complete(CompletionRequest {
+    messages: vec![ChatMessage { role: Role::User, content: "Hello".into() }],
+    model: "llama3".into(),
+    ..Default::default()
+}).await?;
+```
+
+All cloud-bound data passes through `sanitizer::sanitize_for_cloud()` to strip secrets, IPs, emails, and paths.
+
+### 2. Blockchain Audit Logs
+
+```rust
+use futureminal_blockchain::audit::AuditLogger;
+
+let mut logger = AuditLogger::new();
+logger.log_command("git push origin main", "/home/user/project", 0);
+logger.flush();
+assert!(logger.verify().is_ok());
+```
+
+Every command is hashed into an immutable chain. Optional on-chain notarization via Ethereum or Solana adapters.
+
+### 3. Plugin Host
+
+```javascript
+// example-plugin.js
+// @name uppercase-commands
+// @version 1.0.0
+
+export function onCommand(cmd) {
+    return cmd.toUpperCase();
+}
+```
+
+Plugins are sandboxed JavaScript modules with metadata extraction.
 
 ---
 
@@ -177,4 +231,4 @@ We welcome contributions! Please ensure all tests pass before submitting:
 cargo test -p futureminal-core -p futureminal-ai -p futureminal-blockchain -p futureminal-ipc -p futureminal-plugin -p futureminal-renderer -p futureminal --lib
 ```
 
-> **Note**: This is a real fork of Warp's repository. We have stripped proprietary cloud features and built an independent, open-source terminal that anyone can run, modify, and extend. Futureminal is a **distinct project** with its own visual identity, architecture, and feature set.
+> **Note**: This is a real fork of Warp's repository. We have stripped proprietary cloud features and built an independent, open-source terminal that anyone can run, modify, and extend. Futureminal2 is a **distinct project** with its own visual identity, architecture, and feature set.
