@@ -199,13 +199,15 @@ Plugins are sandboxed JavaScript modules with metadata extraction.
 - [x] wgpu 29.x surface + render pipeline (real GPU code, not stub)
 - [x] JavaScript plugin host with metadata extraction (real code, not stub)
 - [x] Cross-platform windowing abstraction module
-- [ ] Full VT sequence coverage tests (all 30 core tests pass)
-- [ ] GPU renderer text atlas + glyph rendering (surface ready, glyphs pending)
-- [ ] Plugin sandbox security audit (needs QuickJS integration)
+- [x] Core test suite: 63 tests, 100% pass rate
+- [ ] Extended VT sequence coverage (DCS, full OSC, etc.)
+- [ ] GPU text atlas + glyph rasterization
+- [ ] Plugin QuickJS execution sandbox
 - [ ] CI/CD pipelines
 
 ### Phase 2: Advanced Features
 - [x] Custom theme system (deep slate blue visual identity)
+- [x] Distinct windowing abstraction from Warp
 - [ ] AI agent mode (autonomous terminal tasks)
 - [ ] Real-time collaborative sessions
 - [ ] Custom shaders and animations
