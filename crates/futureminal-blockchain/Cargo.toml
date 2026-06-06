@@ -1,0 +1,31 @@
+[package]
+name = "futureminal-blockchain"
+version = "0.1.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository = "https://github.com/dungnotnull/futureminal"
+
+[dependencies]
+tokio = { workspace = true, features = ["full", "full"] }
+serde = { workspace = true }
+alloy = { version = "0.4", optional = true }
+ring = "0.17"
+argon2 = "0.5"
+tracing = { workspace = true }
+thiserror = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+hex = { workspace = true }
+anyhow = { workspace = true }
+async-trait = "0.1"
+aes-gcm = "0.10"
+
+[features]
+default = []
+blockchain = ["dep:alloy"]
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = { workspace = true }
+

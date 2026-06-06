@@ -1,0 +1,34 @@
+[package]
+name = "futureminal-core"
+version = "0.1.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository = "https://github.com/dungnotnull/futureminal"
+
+[dependencies]
+tokio = { workspace = true, features = ["full", "full"] }
+serde = { workspace = true }
+toml = "0.8"
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+portable-pty = "0.8"
+chrono = { workspace = true }
+uuid = { workspace = true }
+dirs = { workspace = true }
+indexmap = { version = "2", features = ["serde"] }
+bitflags = { workspace = true }
+parking_lot = { workspace = true }
+regex = { workspace = true }
+unicode-width = "0.2"
+serde_json = { workspace = true }
+
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = { workspace = true }
+serde_json = { workspace = true }
+
+

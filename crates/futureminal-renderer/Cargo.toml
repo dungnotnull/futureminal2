@@ -1,0 +1,12 @@
+[package]
+name = "futureminal-renderer"
+version = "0.1.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository = "https://github.com/dungnotnull/futureminal"
+
+[dependencies]
+tokio = { workspace = true, features = ["full"] }
+tracing = { workspace = true }
+anyhow = { workspace = true }

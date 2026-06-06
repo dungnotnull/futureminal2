@@ -1,0 +1,20 @@
+[package]
+name = "futureminal-ipc"
+version = "0.1.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository = "https://github.com/dungnotnull/futureminal"
+
+[dependencies]
+anyhow = "1.0"
+async-trait = "0.1"
+tokio = { workspace = true, features = ["full", "full"] }
+serde = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+serde_json = { workspace = true }
+

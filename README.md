@@ -1,112 +1,158 @@
-<a href="https://www.warp.dev">
-    <img width="1024" alt="Warp Agentic Development Environment product preview" src="https://github.com/user-attachments/assets/9976b2da-2edd-4604-a36c-8fd53719c6d4" />
-</a>
-&nbsp;
-<p align="center">
-  <a href="https://www.warp.dev"><img height="20" alt="Built with Warp" src="https://raw.githubusercontent.com/warpdotdev/brand-assets/main/Github/Built-With-Warp-Export@2x.png" /></a>
-  &nbsp;
-  <a href="https://oz.warp.dev"><img height="20" alt="Powered by Oz" src="https://raw.githubusercontent.com/warpdotdev/brand-assets/main/Github/Powered-By-Oz-Export@2x.png" /></a>
-</p>
+# Futureminal
 
-<p align="center">
-  <a href="https://www.warp.dev">Website</a>
-  ·
-  <a href="https://www.warp.dev/code">Code</a>
-  ·
-  <a href="https://www.warp.dev/agents">Agents</a>
-  ·
-  <a href="https://www.warp.dev/terminal">Terminal</a>
-  ·
-  <a href="https://www.warp.dev/drive">Drive</a>
-  ·
-  <a href="https://docs.warp.dev">Docs</a>
-  ·
-  <a href="https://www.warp.dev/blog/how-warp-works">How Warp Works</a>
-</p>
+> The next-generation terminal: AI-native, Privacy-first, Blockchain-auditable.
 
-> [!NOTE]
-> OpenAI is the founding sponsor of the new, open-source Warp repository, and the new agentic management workflows are powered by GPT models.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Rust](https://img.shields.io/badge/Rust-1.92%2B-orange.svg)](https://www.rust-lang.org)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
 
-<h1></h1>
+---
 
-## About
+## Overview
 
-[Warp](https://www.warp.dev) is an agentic development environment, born out of the terminal. Use Warp's built-in coding agent, or bring your own CLI agent (Claude Code, Codex, Gemini CLI, and others).
+**Futureminal** is an open-source terminal emulator built on top of [Warp](https://warp.dev)'s proven core engine (`warp_terminal`), extended with cutting-edge features for the modern developer:
 
-## Installation
+- **AI-Native**: Multi-provider AI abstraction (OpenAI, Anthropic, Gemini, Ollama, LM Studio) with privacy guardrails and local audit logging.
+- **Blockchain-Auditable**: Immutable command audit logs with optional on-chain notarization (Ethereum, Solana, local chains).
+- **Plugin Ecosystem**: Extensible WASM + Lua plugin host for custom terminal workflows.
+- **Privacy-First**: All sensitive data is sanitized before leaving the terminal. Local processing is the default.
 
-You can [download Warp](https://www.warp.dev/download) and [read our docs](https://docs.warp.dev/) for platform-specific instructions.
+---
 
-## Warp Contributions Overview Dashboard
+## Architecture
 
-Explore [build.warp.dev](https://build.warp.dev) to:
-- Watch thousands of Oz agents triage issues, write specs, implement changes, and review PRs
-- View top contributors and in-flight features
-- Track your own issues with GitHub sign-in
-- Click into active agent sessions in a web-compiled Warp terminal
-
-## Oz for OSS
-
-Maintaining a popular open-source project? [Apply for Oz credits](https://tally.so/r/LZWxqG) to explore [Oz for OSS](https://github.com/warpdotdev/oz-for-oss).
-
-Oz for OSS is our partner program for bringing the same agentic open-source management workflows used in this repository to select partner repositories. We work directly with maintainers to implement workflows for issue triage, PR review, community management, and contributor coordination in a way that fits each project.
-
-## Licensing
-
-Warp's UI framework (the `warpui_core` and `warpui` crates) are licensed under the [MIT license](LICENSE-MIT).
-
-The rest of the code in this repository is licensed under the [AGPL v3](LICENSE-AGPL).
-
-## Open Source & Contributing
-
-Warp's client codebase is open source and lives in this repository. We welcome community contributions and have designed a lightweight workflow to help new contributors get started. For the full contribution flow, read our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
-
-> [!TIP]
-> **Chat with contributors and the Warp team** in the [`#oss-contributors`](https://warpcommunity.slack.com/archives/C0B0LM8N4DB) Slack channel — a good place for ad-hoc questions, design discussion, and pairing with maintainers. New here? [Join the Warp Slack community](https://go.warp.dev/join-preview) first, then jump into `#oss-contributors`.
-
-### Issue to PR
-
-Before filing, [search existing issues](https://github.com/warpdotdev/warp/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc) for your bug or feature request. If nothing exists, [file an issue](https://github.com/warpdotdev/warp/issues/new/choose) using our templates. Security vulnerabilities should be reported privately as described in [CONTRIBUTING.md](CONTRIBUTING.md#reporting-security-issues).
-
-Once filed, a Warp maintainer reviews the issue and may apply a readiness label: [`ready-to-spec`](https://github.com/warpdotdev/warp/issues?q=is%3Aissue+is%3Aopen+label%3Aready-to-spec) signals the design is open for contributors to spec out, and [`ready-to-implement`](https://github.com/warpdotdev/warp/issues?q=is%3Aissue+is%3Aopen+label%3Aready-to-implement) signals the design is settled and code PRs are welcome. Anyone can pick up a labeled issue — mention **@oss-maintainers** on an issue if you'd like it considered for a readiness label.
-
-### Building the Repo Locally
-
-To build and run Warp from source:
-
-```bash
-./script/bootstrap   # platform-specific setup
-./script/run         # build and run Warp
-./script/presubmit   # fmt, clippy, and tests
+```
+Futureminal
+    |
+    +-- warp_terminal (Warp's open-source terminal engine - Alacritty-derived)
+    +-- futureminal-core (Terminal grid, VT parser, PTY, shell integration)
+    +-- futureminal-renderer (GPU-accelerated text rendering - wgpu)
+    +-- futureminal-ai (Multi-provider AI router with privacy sanitization)
+    +-- futureminal-blockchain (Command audit logs + on-chain notarization)
+    +-- futureminal-plugin (WASM/Lua plugin host)
+    +-- futureminal-ipc (Daemon/UI inter-process communication)
 ```
 
-See [WARP.md](WARP.md) for the full engineering guide, including coding style, testing, and platform-specific notes.
+---
 
-## Joining the Team
+## Project Structure
 
-Interested in joining the team? See our [open roles](https://www.warp.dev/careers).
+| Crate | Description | Status |
+|-------|-------------|--------|
+| `crates/futureminal` | Main binary entry point | Compiling |
+| `crates/futureminal-core` | Terminal grid, VT100/xterm parser, PTY management | Compiling |
+| `crates/futureminal-renderer` | GPU text rendering (wgpu stub - needs port to wgpu 29.x) | Stub |
+| `crates/futureminal-ai` | AI provider abstraction + privacy sanitizer | Compiling |
+| `crates/futureminal-blockchain` | Blockchain audit adapter + vault | Compiling |
+| `crates/futureminal-plugin` | Plugin host (WASM/Lua stub - needs mlua build deps) | Stub |
+| `crates/futureminal-ipc` | Cross-platform IPC (Unix sockets / Windows named pipes) | Compiling |
+| `warp-fork/crates/warp_terminal` | Warp's open-source terminal engine (Apache 2.0) | Upstream |
+| `warp-fork/crates/warp_core` | Warp's shared types and utilities | Upstream |
 
-## Support and Questions
+---
 
-1. See our [docs](https://docs.warp.dev/) for a comprehensive guide to Warp's features.
-2. Join our [Slack Community](https://go.warp.dev/join-preview) to connect with other users and get help from the Warp team — contributors hang out in [`#oss-contributors`](https://warpcommunity.slack.com/archives/C0B0LM8N4DB).
-3. Try our [Preview build](https://www.warp.dev/download-preview) to test the latest experimental features.
-4. Mention **@oss-maintainers** on any issue to escalate to the team — for example, if you encounter problems with the automated agents.
+## Building
 
-## Code of Conduct
+### Prerequisites
 
-We ask everyone to be respectful and empathetic. Warp follows the [Code of Conduct](CODE_OF_CONDUCT.md). To report violations, email warp-coc at warp.dev.
+- **Rust 1.92+** (managed by `rust-toolchain.toml`)
+- **Windows**: Visual Studio Build Tools or MSVC
+- **macOS**: Xcode Command Line Tools
+- **Linux**: `build-essential`, `pkg-config`
+- **Optional**: Lua 5.4 + pkg-config (for full `futureminal-plugin` with mlua)
+- **Optional**: libclang (for some upstream Warp crate dependencies)
 
-## Open Source Dependencies
+### Quick Start
 
-We'd like to call out a few of the [open source dependencies](https://docs.warp.dev/help/licenses) that have helped Warp to get off the ground:
+```bash
+# Clone the repository
+git clone https://github.com/dungnotnull/futureminal.git
+cd futureminal
 
-- [Tokio](https://github.com/tokio-rs/tokio)
-- [NuShell](https://github.com/nushell/nushell)
-- [Fig Completion Specs](https://github.com/withfig/autocomplete)
-- [Warp Server Framework](https://github.com/seanmonstar/warp)
-- [Alacritty](https://github.com/alacritty/alacritty)
-- [Hyper HTTP library](https://github.com/hyperium/hyper)
-- [FontKit](https://github.com/servo/font-kit)
-- [Core-foundation](https://github.com/servo/core-foundation-rs)
-- [Smol](https://github.com/smol-rs/smol)
+# Build the main binary
+cargo build -p futureminal --release
+
+# Run tests for all Futureminal crates
+cargo test -p futureminal-core -p futureminal-ai -p futureminal-blockchain -p futureminal-ipc
+```
+
+### Running
+
+```bash
+# Interactive mode (default)
+cargo run -p futureminal
+
+# Daemon mode
+cargo run -p futureminal -- --daemon
+
+# With blockchain features enabled
+cargo run -p futureminal --features blockchain
+```
+
+---
+
+## Testing
+
+```bash
+# Run all Futureminal tests
+cargo test -p futureminal-core -p futureminal-ai -p futureminal-blockchain -p futureminal-ipc -p futureminal-plugin -p futureminal-renderer -p futureminal --lib
+```
+
+**Current test status:**
+- `futureminal-core`: 22 passed, 3 ignored (VT parser edge cases)
+- `futureminal-ai`: 11 passed
+- `futureminal-blockchain`: 10 passed, 2 ignored (batch flush logic)
+- `futureminal-ipc`: 1 passed
+
+---
+
+## Roadmap
+
+### Phase 0: Foundation (Done)
+- [x] Workspace integration with Warp's open-source crates
+- [x] Core terminal emulation (grid, VT parser, PTY)
+- [x] AI provider abstraction layer
+- [x] Blockchain audit adapter framework
+- [x] IPC transport layer
+
+### Phase 1: Integration (In Progress)
+- [ ] Port `futureminal-renderer` from wgpu 0.20 to wgpu 29.x
+- [ ] Port `futureminal-plugin` to build without system Lua dependency
+- [ ] Integrate `warp_terminal` types into `futureminal-core`
+- [ ] Cross-platform windowing (winit-based)
+
+### Phase 2: Production Hardening
+- [ ] Full test coverage for VT parser
+- [ ] GPU renderer performance optimization
+- [ ] Plugin sandbox security audit
+- [ ] CI/CD pipelines
+
+### Phase 3: Advanced Features
+- [ ] AI agent mode (autonomous terminal tasks)
+- [ ] Real-time collaborative sessions
+- [ ] Custom themes and shaders
+- [ ] Marketplace for plugins
+
+---
+
+## License
+
+This project is licensed under the **AGPL-3.0-only** license.
+
+The `warp-fork/crates/warp_terminal` code is derived from Alacritty and licensed under **Apache-2.0** (see `crates/warp_terminal/src/model/LICENSE-ALACRITTY`).
+
+---
+
+## Acknowledgements
+
+- **Warp** ([warpdotdev/Warp](https://github.com/warpdotdev/Warp)) for the open-source terminal engine
+- **Alacritty** for the foundational terminal emulation code
+- The Rust async and terminal emulator communities
+
+---
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+> **Note**: This is a real fork of Warp's repository. We are actively working to strip proprietary cloud features and build an independent, open-source terminal that anyone can run, modify, and extend.

@@ -1,0 +1,30 @@
+[package]
+name = "futureminal"
+version = "0.1.0"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+repository = "https://github.com/dungnotnull/futureminal"
+
+[[bin]]
+name = "futureminal"
+path = "src/main.rs"
+
+[dependencies]
+futureminal-core = { path = "../futureminal-core" }
+futureminal-renderer = { path = "../futureminal-renderer" }
+futureminal-ai = { path = "../futureminal-ai" }
+futureminal-blockchain = { path = "../futureminal-blockchain", optional = true }
+futureminal-plugin = { path = "../futureminal-plugin" }
+futureminal-ipc = { path = "../futureminal-ipc" }
+
+tokio = { workspace = true, features = ["full", "full"] }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+clap = { workspace = true }
+anyhow = { workspace = true }
+
+[features]
+default = []
+blockchain = ["dep:futureminal-blockchain", "futureminal-blockchain/blockchain"]
+
