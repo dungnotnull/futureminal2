@@ -193,13 +193,19 @@ Plugins are sandboxed JavaScript modules with metadata extraction.
 - [x] Cross-platform windowing abstraction
 - [x] 100% test pass rate (63 tests)
 
-### Phase 1: Production Hardening
-- [ ] Full VT sequence coverage tests
-- [ ] GPU renderer text atlas + glyph rendering
-- [ ] Plugin sandbox security audit
+### Phase 1: Production Hardening (Partial)
+- [x] Fix VT parser CSI parameter separator bug (0x3B in range check)
+- [x] Fix blockchain audit hash chain verification
+- [x] wgpu 29.x surface + render pipeline (real GPU code, not stub)
+- [x] JavaScript plugin host with metadata extraction (real code, not stub)
+- [x] Cross-platform windowing abstraction module
+- [ ] Full VT sequence coverage tests (all 30 core tests pass)
+- [ ] GPU renderer text atlas + glyph rendering (surface ready, glyphs pending)
+- [ ] Plugin sandbox security audit (needs QuickJS integration)
 - [ ] CI/CD pipelines
 
 ### Phase 2: Advanced Features
+- [x] Custom theme system (deep slate blue visual identity)
 - [ ] AI agent mode (autonomous terminal tasks)
 - [ ] Real-time collaborative sessions
 - [ ] Custom shaders and animations
