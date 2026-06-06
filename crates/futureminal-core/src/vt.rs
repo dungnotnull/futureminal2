@@ -246,12 +246,12 @@ impl Parser {
                 }
             }
             State::CsiParam => {
-                if byte >= 0x30 && byte <= 0x3F {
+                if byte == 0x3B {
+                    self.params.push(Vec::new());
+                } else if byte >= 0x30 && byte <= 0x3F {
                     if let Some(last) = self.params.last_mut() {
                         last.push(byte);
                     }
-                } else if byte == 0x3B {
-                    self.params.push(Vec::new());
                 } else if byte >= 0x20 && byte <= 0x2F {
                     self.state = State::CsiIntermediate;
                     self.intermediate.push(byte);
@@ -719,7 +719,6 @@ mod tests {
     use super::*;
 
     #[test]
-    #[ignore = "needs fix: cursor position parsing"]
     fn test_parse_cursor_movement() {
         let mut parser = Parser::new();
         let actions = parser.feed(b"\x1b[10;20H");
@@ -728,7 +727,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore = "needs fix: SGR color parsing"]
     fn test_parse_sgr_colors() {
         let mut parser = Parser::new();
         let actions = parser.feed(b"\x1b[31;42m");
@@ -743,7 +741,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore = "needs fix: truecolor parsing"]
     fn test_parse_truecolor() {
         let mut parser = Parser::new();
         let actions = parser.feed(b"\x1b[38;2;255;128;0m");

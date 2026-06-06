@@ -100,10 +100,10 @@ impl AuditLogger {
     }
 
     pub fn last_hash(&self) -> Option<String> {
-        self.blocks.last().map(|b| b.hash.clone())
+        self.pending.last().or_else(|| self.blocks.last()).map(|b| b.hash.clone())
     }
 
-    pub fn len(&self) -> usize { self.blocks.len() }
+    pub fn len(&self) -> usize { self.blocks.len() + self.pending.len() }
 
     fn next_index(&self) -> u64 {
         (self.blocks.len() + self.pending.len()) as u64
@@ -135,7 +135,6 @@ mod tests {
     use super::*;
 
     #[test]
-    #[ignore = "needs fix: batch flush logic"]
     fn test_audit_log_lifecycle() {
         let mut logger = AuditLogger::new();
         logger.log_command("ls -la", "/home/user", 0);
@@ -144,7 +143,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore = "needs fix: hash chain verification"]
     fn test_audit_verification() {
         let mut logger = AuditLogger::new();
         logger.log_command("echo test", "/tmp", 0);

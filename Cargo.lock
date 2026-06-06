@@ -6203,6 +6203,7 @@ dependencies = [
  "anyhow",
  "tokio",
  "tracing",
+ "wgpu",
 ]
 
 [[package]]

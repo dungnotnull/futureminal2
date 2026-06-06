@@ -11,6 +11,7 @@ pub mod session;
 pub mod shell;
 pub mod theme;
 pub mod vt;
+pub mod windowing;
 
 use std::sync::Arc;
 use tokio::sync::RwLock;

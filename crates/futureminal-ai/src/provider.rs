@@ -327,7 +327,6 @@ fn format_role(role: Role) -> &'static str {
 // ?? SSE / NDJSON Stream Parsing ??
 
 use bytes::Bytes;
-use std::task::{Context, Poll};
 
 fn parse_sse_stream(
     stream: impl Stream<Item = Result<Bytes, reqwest::Error>> + Send + Unpin + 'static,

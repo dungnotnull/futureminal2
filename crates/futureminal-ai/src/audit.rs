@@ -100,7 +100,7 @@ impl AiAuditLog {
 
     /// Compute SHA-256 hash of prompt text.
     pub fn hash_prompt(prompt: &str) -> String {
-        use std::hash::{Hash, Hasher};
+        use std::hash::Hasher;
         // In production, use ring::digest::digest(ring::digest::SHA256, ...)
         // Compute SHA-256 hash of the prompt.
                 use ring::digest::{Context, SHA256};

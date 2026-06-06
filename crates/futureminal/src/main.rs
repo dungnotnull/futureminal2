@@ -125,7 +125,7 @@ async fn run_daemon(state: futureminal_core::CoreState) -> anyhow::Result<()> {
     });
 
     // Main daemon loop
-    let mut shutdown = false;
+    let mut _shutdown = false;
     loop {
         tokio::select! {
             Some((request, responder)) = ipc_rx.recv() => {
@@ -135,7 +135,7 @@ async fn run_daemon(state: futureminal_core::CoreState) -> anyhow::Result<()> {
             }
             _ = &mut shutdown_rx => {
                 info!("Received shutdown signal, exiting daemon gracefully");
-                shutdown = true;
+                _shutdown = true;
                 break;
             }
             else => {

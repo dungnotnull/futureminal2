@@ -11,7 +11,7 @@ use crate::provider::*;
 use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::RwLock;
-use tracing::{debug, info, warn};
+use tracing::{debug, info};
 
 /// Privacy-aware routing mode.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
